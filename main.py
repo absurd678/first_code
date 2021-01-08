@@ -1,3 +1,8 @@
+# Welcome to Move! game!
+# In this game the player is allowed to choose one of two nearest locations and get the small task
+# The forbidden location is the Ctulhu's grave - the R'lyeh
+# Here the main attributes are dictionaries, in case of its usefulness for this game
+# The class-composite is here, the components are in modules
 import hm
 import content
 
@@ -63,12 +68,15 @@ class Game:
             self.player.clean()
             self.player.find_nearest(self.locations)
             self.player.odd_variant(self.locations)
-            self.player.call()
-            self.content.ask_question()
-            if not self.locations.reached():
-                self.locations.fill_dict()
-            if self.content.reached():
-                self.player.saved()
+            if self.player.call():
+                self.content.ask_question()
+                if not self.locations.reached():
+                    self.locations.fill_dict()
+                if self.content.reached():
+                    self.player.saved()
+                    break
+            else:  # If you've chosen the R'lyeh...
+                self.player.died()
                 break
 game = Game()
 game.game()
