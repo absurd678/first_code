@@ -3,7 +3,7 @@ class Hero:
         self.data = {}
 
     def call(self):  
-        if self.data[0] == "R'lyeh":
+        if self.data[0] == "r'lyeh":
            print("""
                  What a big mistake...
                  """)
