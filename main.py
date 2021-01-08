@@ -2,7 +2,7 @@
 # In this game the player is allowed to choose one of two nearest locations and get the small task
 # The forbidden location is the Ctulhu's grave - the R'lyeh
 # Here the main attributes are dictionaries, in case of its usefulness for this game
-# The class-composite is here, the components are in modules
+# The class-composite is here(Game), the components are in modules(others)
 import hm
 import content
 
@@ -56,7 +56,7 @@ class Content(content.Victorina):
     def reached(self):
         return self.quiz == {}
 
-class Game:
+class Game:  # A composite class, contains the cycle, I'd recommend start here
     def __init__(self):
         self.player = HM_Hero()
         self.locations = HM_Locations()
