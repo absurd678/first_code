@@ -2,7 +2,7 @@ class Hero:
     def __init__(self):
         self.data = {}
 
-    def call(self):  # Correct
+    def call(self):  
         if self.data[0] == "R'lyeh":
            print("""
                  What a big mistake...
@@ -35,7 +35,7 @@ class Point:
         for city in self.locations.keys():
             self.cities.append(city)
 
-    def current_location(self):
+    def current_location(self):  # Defines the nearest cities
         self.define_lists()
         distances = self.distances
         curr_idx = distances.index(min(distances))
@@ -43,17 +43,17 @@ class Point:
         self.change_pos(curr_city)  # Delete nearest to choose another later
         return curr_city
 
-    def change_pos(self, city):
+    def change_pos(self, city):   # Removing the chosen city  from dict
         distances = self.distances
         ODD_IDX = self.cities.index(city)
-        self.cities.remove(self.cities[ODD_IDX])  # We can do like: new = other.cities.remove()
-        distances.remove(distances[ODD_IDX])  # , but the first dict doesn't change
+        self.cities.remove(self.cities[ODD_IDX]) 
+        distances.remove(distances[ODD_IDX])  
         self.locations = self.delete_items()
         for round in range(len(distances)):
             self.locations.setdefault(self.cities[round], distances[round])
         return self.locations
 
-    def delete_items(self):
+    def delete_items(self):  # For creating the new dict without trashed city
         self.locations = {}
         return self.locations
     def fill_dict(self):
@@ -62,4 +62,4 @@ class Point:
         return self.locations
 
 if __name__=='__main__':
-    print("If you want to check the information about this code - follow the file 'Demo_hero_move.py'")
+    print("You've played the module")
